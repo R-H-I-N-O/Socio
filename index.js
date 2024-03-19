@@ -9,6 +9,9 @@ const app = express();
 
 app.use(express.static("./assets"));
 app.use(ejsLayouts);
+// setting individual styles and scripts into layouts.ejs
+app.set("layout extractStyles", true);
+app.set("layout extractScripts", true);
 
 // adding routes
 app.use('/',router);
