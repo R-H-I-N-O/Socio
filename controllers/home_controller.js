@@ -1,4 +1,6 @@
 module.exports.home = (req,res)=>{
-    return res.end("<h1>Socio is up for testing</h1>")
+    return res.render("home",{
+        title: "Home"
+    });
 }
 

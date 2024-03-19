@@ -1,10 +1,14 @@
 const express = require('express');
+const ejsLayouts = require('express-ejs-layouts');
 
 const port = 8000;
 const router = require('./routes/index');
 
 // creating an instance of express
 const app = express();
+
+app.use(express.static("./assets"));
+app.use(ejsLayouts);
 
 // adding routes
 app.use('/',router);
