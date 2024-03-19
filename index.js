@@ -3,6 +3,7 @@ const ejsLayouts = require('express-ejs-layouts');
 
 const port = 8000;
 const router = require('./routes/index');
+const db = require("./config/mongoose");
 
 // creating an instance of express
 const app = express();
