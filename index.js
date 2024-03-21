@@ -2,14 +2,16 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 
 const port = 8000;
-const router = require('./routes/index');
-const db = require("./config/mongoose");
+const router = require('./routes/index'); 
+const User = require("./models/users");
+const db = require("./config/mongoose"); //importing mongo db
 
 // creating an instance of express
 const app = express();
 
-app.use(express.static("./assets"));
-app.use(ejsLayouts);
+app.use(express.static("./assets")); // defining the directory url for static files
+app.use(ejsLayouts); // telling app to use ejslayouts
+
 // setting individual styles and scripts into layouts.ejs
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
