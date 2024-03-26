@@ -1,10 +1,14 @@
 const User = require("../models/users");
 
-module.exports.signUp = (req,res)=>{
+module.exports.signUp = (req, res) => {
+
+    if (req.isAuthenticated()) {
+        return res.redirect("/users/profile");
+    }
     return res.render(
-        "sign-up",{
-            title: "Socio | SignUp"
-        }
+        "sign-up", {
+        title: "Socio | SignUp"
+    }
     );
 }
 
@@ -22,7 +26,7 @@ module.exports.create = async (req, res) => {
         }
 
         // Create new user
-        await User.create( req.body);
+        await User.create(req.body);
         console.log(req.body);
         return res.status(201).redirect("/users/sign-in"); // Redirect to sign-in after successful creation
     } catch (error) {

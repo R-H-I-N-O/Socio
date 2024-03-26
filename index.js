@@ -1,10 +1,8 @@
 const express = require('express');
-const ejsLayouts = require('express-ejs-layouts');
-const cookieParser = require('cookie-parser')
-
+const cookieParser = require('cookie-parser');
+const app = express();
 const port = 8000;
-const router = require('./routes/index');
-const User = require("./models/users");
+const ejsLayouts = require('express-ejs-layouts');
 const db = require("./config/mongoose"); //importing mongo db
 
 // used for session cookie
@@ -12,8 +10,7 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require("./config/passport-local-strategy");
 
-// creating an instance of express
-const app = express();
+const User = require("./models/users");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -41,8 +38,10 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 // adding routes
+const router = require('./routes/index');
 app.use('/', router);
 
 app.listen(port, (err) => {
