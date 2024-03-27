@@ -1,5 +1,11 @@
 <link rel="stylesheet" href="/css/header.css">
 
 <header>
-    This is a sample header
+    <% if(locals.user){ %>
+        <a class="userName" href="/users/profile"> <%= user.name %> </a>
+        <a href="/users/sign-out"> Sign Out </a>
+    <% }else{ %>
+        <a href="/users/sign-in"> Sign In </a>
+        <a href="/users/sign-up"> Sign Up </a>
+    <% }%>
 </header>

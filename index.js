@@ -4,6 +4,8 @@ const app = express();
 const port = 8000;
 const ejsLayouts = require('express-ejs-layouts');
 const db = require("./config/mongoose"); //importing mongo db
+const mongoStore = require("connect-mongo");
+const sassMidlleware = require("node-sass-middleware");
 
 // used for session cookie
 const session = require('express-session');
@@ -12,6 +14,13 @@ const passportLocal = require("./config/passport-local-strategy");
 
 const User = require("./models/users");
 
+app.use(sassMidlleware({
+    src: "./assets/scss",
+    dest: "./assets/css",
+    debug: true,
+    prefix: "./assets/css",
+    outputStyle: "expanded"
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static("./assets")); // defining the directory url for static files
@@ -33,7 +42,10 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
-    }
+    },
+    store: mongoStore.create({
+        mongoUrl: "mongodb://localhost:27017/socio_devlopment"
+    })
 }));
 
 app.use(passport.initialize());
