@@ -5,51 +5,52 @@
     height: 80vh;
     background-color: #caf0f8;
     font-family: sans-serif;
+    .signup-main{
+        height: 100%;
+        width: 100%;display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .signup-form{
+            font-size: 1.25rem;
+            width: 40%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            background-color: #00b4d8;
+            border-radius: 1rem;
+            h2{
+                color: white;
+            }
+            input{
+                border: none;
+                font-size: 1.1rem;
+                border: .5rem;
+                background-color: #90e0ef;
+                padding: .5rem;
+                border-radius: 0.75rem;
+                width: 18rem;
+            }
+            input:focus{
+                outline: none;
+            }
+            .signup-btn{
+                margin-top: 1rem;
+                padding: .75rem 1.5rem .75rem 1.5rem;
+                border-radius: 1rem;
+                font-size: 1.2rem;
+                border: none;
+                background-color: #caf0f8;
+            
+            }
+            .signup-btn:hover{
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+    }
 }
-.signup-main{
-    height: 100%;
-    width: 100%;display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.signup-form{
-    font-size: 1.25rem;
-    width: 40%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: #00b4d8;
-    border-radius: 1rem;
-}
-input{
-    border: none;
-    font-size: 1.1rem;
-    border: .5rem;
-    background-color: #90e0ef;
-    padding: .5rem;
-    border-radius: 0.75rem;
-    width: 18rem;
-}
-input:focus{
-    outline: none;
-}
-.signup-btn{
-    margin-top: 1rem;
-    padding: .75rem 1.5rem .75rem 1.5rem;
-    border-radius: 1rem;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #caf0f8;
 
-}
-.signup-btn:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-}
-h2{
-    color: white;
-}

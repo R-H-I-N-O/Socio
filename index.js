@@ -18,7 +18,7 @@ app.use(sassMidlleware({
     src: "./assets/scss",
     dest: "./assets/css",
     debug: true,
-    prefix: "./assets/css",
+    prefix: "/css",
     outputStyle: "expanded"
 }));
 app.use(express.urlencoded({ extended: true }));
