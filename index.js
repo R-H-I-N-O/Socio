@@ -37,7 +37,7 @@ app.set('views', './views')
 // Express session
 app.use(session({
     name: "socio",
-    secret: "secretcode",
+    secret: "temp-secretcode",
     saveUninitialized: false,
     resave: false,
     cookie: {

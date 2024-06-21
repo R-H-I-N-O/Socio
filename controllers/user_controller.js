@@ -58,7 +58,7 @@ module.exports.create = async (req, res) => {
 
         // Create new user
         await User.create(req.body);
-        console.log(req.body);
+        // console.log(req.body);
         return res.status(201).redirect("/users/sign-in"); // Redirect to sign-in after successful creation
     } catch (error) {
         console.error("Error in user creation:", error);

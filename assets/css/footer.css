@@ -1,6 +1,6 @@
 footer {
-  height: 25vh;
-  background-color: #03045e;
+  height: auto;
+  background-color: #008DDA;
   padding-top: .75rem;
   display: flex;
   justify-content: center;
