@@ -6,6 +6,7 @@ const ejsLayouts = require('express-ejs-layouts');
 const db = require("./config/mongoose"); //importing mongo db
 const mongoStore = require("connect-mongo");
 const sassMidlleware = require("node-sass-middleware");
+const flash = require('connect-flash');
 
 // used for session cookie
 const session = require('express-session');
@@ -47,6 +48,7 @@ app.use(session({
         mongoUrl: "mongodb://localhost:27017/socio_devlopment"
     })
 }));
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());

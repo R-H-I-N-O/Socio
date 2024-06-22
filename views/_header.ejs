@@ -8,12 +8,15 @@
             <span class="logo-name">Socio</span>
         </a>
     </div>
-    <div class="signing-part">
+    <div class="support-signout-part">
         <% if(locals.user){ %>
             <a class="userName" href="/users/profile"> <%= user.name %> </a>
             <a href="/users/sign-out"> Sign Out </a>
         <% }else{ %>
-            <a href="/users/help"> Customer support </a>
+            <a href="/help/contactus"> Customer support 
+                <img src="/images/customer-service.png" alt="support img">
+            </a>
+            
         <% }%>
     </div>
 </header>

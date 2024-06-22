@@ -19,9 +19,12 @@ module.exports.signIn = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect("/users/profile");
     }
+    const alert = req.session.messages;
+    req.session.messages = "";
     return res.render(
         "sign-in", {
-        title: "Socio | Sign In"
+        title: "Socio | Sign In",
+        alert: alert
     }
     )
 }
@@ -37,8 +40,9 @@ module.exports.signUp = (req, res) => {
     }
     return res.render(
         "sign-up", {
-        title: "Socio | SignUp"
-    }
+        title: "Socio | SignUp",
+        alert: req.flash('alert')
+        }
     );
 }
 
@@ -47,7 +51,8 @@ module.exports.create = async (req, res) => {
     try {
         // Check if password and confirmPassword match
         if (req.body.password !== req.body.confirmPassword) {
-            return res.status(400).send("Passwords do not match");
+            req.flash('alert', 'Password doesnot match');
+            return res.status(401).redirect("/users/sign-up");
         }
 
         // Check if user with the same email already exists

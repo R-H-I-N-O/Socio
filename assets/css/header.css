@@ -35,11 +35,21 @@ header .logo-part a img {
   width: 2rem;
 }
 
-header .signing-part {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+header .support-signout-part {
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   display: flex;
   justify-content: flex-end;
   box-sizing: border-box;
   gap: 2rem;
+}
+
+header .support-signout-part a {
+  display: flex;
+  align-items: center;
+}
+
+header .support-signout-part a img {
+  height: 1.75rem;
+  width: 1.75rem;
 }

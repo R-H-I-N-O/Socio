@@ -1,0 +1,17 @@
+.feedback-container {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7EEDD;
+}
+
+.feedback-container h2 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.feedback-container a {
+  text-decoration: none;
+  color: #00c6fd;
+}

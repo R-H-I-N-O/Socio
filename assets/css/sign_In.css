@@ -1,7 +1,77 @@
-body {
-  height: 100vh;
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  background-color: #F7EEDD;
+  font-family: sans-serif;
 }
 
-body .sign-in-container {
-  height: 63.35%;
+.sign-in-container .sign-in-main {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sign-in-container .sign-in-main .sign-in-form {
+  font-size: 1.25rem;
+  width: 40%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #00c6fd;
+  border-radius: 1rem;
+}
+
+.sign-in-container .sign-in-main .sign-in-form .alert {
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  border: 2px red;
+  background-color: #f0d0d0;
+  color: red;
+  border-radius: 1rem;
+}
+
+.sign-in-container .sign-in-main .sign-in-form h2 {
+  color: white;
+}
+
+.sign-in-container .sign-in-main .sign-in-form input {
+  border: none;
+  font-size: 1.1rem;
+  border: .5rem;
+  background-color: #bbf3ff;
+  padding: .5rem;
+  border-radius: 0.75rem;
+  width: 18rem;
+}
+
+.sign-in-container .sign-in-main .sign-in-form input:focus {
+  outline: none;
+}
+
+.sign-in-container .sign-in-main .sign-in-form .sign-in-btn {
+  margin-top: 1rem;
+  padding: .75rem 1.5rem .75rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #90fffd;
+  font-weight: 600;
+}
+
+.sign-in-container .sign-in-main .sign-in-form .sign-in-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.sign-in-container .sign-in-main .sign-in-form a {
+  text-decoration: none;
+  color: gold;
 }

@@ -1,2 +1,15 @@
+<link rel="stylesheet" href="/css/contact_us.css">
 
-    <h1>Socio <%= title %></h1>
+<div class="contact-main">
+    <div class="contact-us-container">
+        <h1>Socio <%= title %></h1>
+        <div class="formDiv">
+            <form action="/help/contactus/message" method="post" id="contactForm">
+                <input type="text" id="fullName" name="fullName" placeholder="Full name">
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="number" id="mobile" name="mobile" placeholder="Mobile number">
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Type your queries here.."></textarea>
+                <button id="contactButton" type="submit">Send Message</button>
+            </form>
+    </div>
+</div>

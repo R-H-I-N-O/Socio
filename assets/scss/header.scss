@@ -29,14 +29,21 @@ header{
             }
         }
     }
-    .signing-part{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .support-signout-part{
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: 500;
         display: flex;
         justify-content: flex-end;
         // padding: 1rem 2rem 0 2rem;
         box-sizing: border-box;
         gap: 2rem;
-        
+        a{
+            display: flex;
+            align-items: center;
+            img{
+                height: 1.75rem;
+                width: 1.75rem;
+            }
+        }
     }
 }

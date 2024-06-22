@@ -13,7 +13,7 @@ router.get("/sign-out", userController.destroySession);
 
 router.post("/create-session", passport.authenticate(
     'local',
-    { failureRedirect: "/users/sign-in" }
+    { failureRedirect: "/users/sign-in", failureMessage: "Invalid username or password" }
 ), userController.createSession);
 
 module.exports = router;
