@@ -8,14 +8,6 @@
   font-family: sans-serif;
 }
 
-.signup-container .alert {
-  padding: 0.25rem 1rem 0.25rem 1rem;
-  border: 2px red;
-  background-color: #f0d0d0;
-  color: red;
-  border-radius: 1rem;
-}
-
 .signup-container .signup-main {
   height: 90%;
   width: 100%;
@@ -23,6 +15,16 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  box-sizing: border-box;
+}
+
+.signup-container .signup-main .alert {
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  border: 2px red;
+  background-color: #f0d0d0;
+  color: red;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .signup-container .signup-main .signup-form {
@@ -34,7 +36,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   background-color: #00c6fd;
   border-radius: 1rem;
 }

@@ -1,0 +1,175 @@
+// Variables
+$primary-color: #f4f4f4;
+$text-color: #333;
+$secondary-color: #fff;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid-template($columns) {
+    display: grid;
+    grid-template-columns: $columns;
+    gap: 20px;
+}
+
+// Global Styles
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background-color: $secondary-color;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+// Sidebar Styles
+.sidebar, .friends-list {
+    background-color: $primary-color;
+    padding: 20px;
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin: 10px 0;
+            color: $text-color;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .pages {
+        margin-top: 20px;
+
+        h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Main Content Styles
+main {
+    padding: 20px;
+
+    header {
+        margin-bottom: 20px;
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    }
+
+    section {
+        margin-bottom: 20px;
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .story-grid, .post-grid {
+            @include grid-template(repeat(auto-fit, minmax(150px, 1fr)));
+
+            .story, .post {
+                background-color: $secondary-color;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                text-align: center;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                p {
+                    padding: 10px;
+                    font-size: 0.9rem;
+                    color: $text-color;
+                }
+            }
+        }
+
+        .post-grid .post {
+            .post-content {
+                padding: 10px;
+
+                h3 {
+                    font-size: 1rem;
+                    color: $text-color;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    margin: 10px 0;
+                }
+
+                .actions {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.9rem;
+
+                    span {
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Friends List Styles
+.friends-list {
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            span:first-child {
+                flex-grow: 1;
+                font-size: 0.9rem;
+                color: $text-color;
+            }
+
+            span:last-child {
+                font-size: 0.8rem;
+                color: gray;
+            }
+        }
+    }
+}

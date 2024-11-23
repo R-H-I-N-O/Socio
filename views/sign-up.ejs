@@ -1,13 +1,14 @@
 <link rel="stylesheet" href="/css/sign_Up.css">
 
 <div class="signup-container">
-    <% if(alert.length) {%>
-        <div class="alert"> <%= alert %> </div>
-    <% } %>
+    
     <div class="signup-main">
+        <% if(alert.length) {%>
+            <div class="alert"> <%= alert %> </div>
+        <% } %>
         <form action="/users/create" method="post" class="signup-form">
             <h2>Sign Up</h2>
-           
+            
             <span><input type="text" name="name" placeholder="Name" required></span>
             <span><input type="email" name="username" placeholder="Username" required></span>
             <span><input type="password" name="password" placeholder="Password" required></span>

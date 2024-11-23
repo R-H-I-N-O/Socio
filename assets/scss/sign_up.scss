@@ -6,19 +6,23 @@
     height: 92vh;
     background-color: #F7EEDD;
     font-family: sans-serif;
-    .alert{
-        padding: 0.25rem 1rem 0.25rem 1rem;
-        border: 2px red;
-        background-color: rgb(240, 208, 208);
-        color: red;
-        border-radius: 1rem;
-    }
+    
+    
     .signup-main{
         height: 90%;
         width: 100%;display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        box-sizing: border-box;
+        .alert{
+            padding: 0.25rem 1rem 0.25rem 1rem;
+            border: 2px red;
+            background-color: rgb(240, 208, 208);
+            color: red;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
         .signup-form{
             font-size: 1.25rem;
             width: 40%;
@@ -28,7 +32,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
             background-color: #00c6fd;
             border-radius: 1rem;
             

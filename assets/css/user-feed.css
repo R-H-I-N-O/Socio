@@ -1,0 +1,152 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar, .friends-list {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.sidebar .logo, .friends-list .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar ul, .friends-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li, .friends-list ul li {
+  margin: 10px 0;
+  color: #333;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover, .friends-list ul li:hover {
+  text-decoration: underline;
+}
+
+.sidebar .pages, .friends-list .pages {
+  margin-top: 20px;
+}
+
+.sidebar .pages h4, .friends-list .pages h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+main header {
+  margin-bottom: 20px;
+}
+
+main header input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+main section {
+  margin-bottom: 20px;
+}
+
+main section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+main section .story-grid, main section .post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+main section .story-grid .story, main section .story-grid .post, main section .post-grid .story, main section .post-grid .post {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+main section .story-grid .story img, main section .story-grid .post img, main section .post-grid .story img, main section .post-grid .post img {
+  width: 100%;
+  height: auto;
+}
+
+main section .story-grid .story p, main section .story-grid .post p, main section .post-grid .story p, main section .post-grid .post p {
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+main section .post-grid .post .post-content {
+  padding: 10px;
+}
+
+main section .post-grid .post .post-content h3 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+main section .post-grid .post .post-content p {
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+main section .post-grid .post .post-content .actions {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+main section .post-grid .post .post-content .actions span {
+  color: #333;
+}
+
+.friends-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.friends-list ul li {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.friends-list ul li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.friends-list ul li span:first-child {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.friends-list ul li span:last-child {
+  font-size: 0.8rem;
+  color: gray;
+}

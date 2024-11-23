@@ -81,3 +81,10 @@ module.exports.destroySession = (req,res)=>{
         return res.redirect("/");
     });
 }
+
+// User feed page rendering action
+module.exports.userFeed = (req,res)=>{
+    return res.render("user-feed",{
+        title: "Feed"
+    });
+}

@@ -14,6 +14,8 @@ const passport = require('passport');
 const passportLocal = require("./config/passport-local-strategy");
 
 const User = require("./models/users");
+const ContactUs = require("./models/contactUs");
+const Posts = require("./models/posts");
 
 app.use(sassMidlleware({
     src: "./assets/scss",

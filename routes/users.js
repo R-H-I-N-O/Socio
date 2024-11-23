@@ -10,6 +10,7 @@ router.get("/sign-up", userController.signUp);
 router.get("/sign-in", userController.signIn);
 router.post("/create", userController.create);
 router.get("/sign-out", userController.destroySession);
+router.get("/feed", userController.userFeed);
 
 router.post("/create-session", passport.authenticate(
     'local',
