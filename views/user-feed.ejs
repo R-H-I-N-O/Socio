@@ -1,54 +1,65 @@
-<link rel="stylesheet" href="/css/user-feed.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Social Media Dashboard</title>
+    <link rel="stylesheet" href="/css/user_feed.css">
 </head>
 <body>
-    
+    <% if(alert.length) {%>
+        <div class="<%= alert.type === 'error' ? 'alert' : 'success' %>"> <%= alert.message %> </div>
+    <% } %>
+    <div class="header">
+        <div class="logo">LOGO</div>
+        <input type="text" placeholder="Search">
+        <div>
+            <div class="profile">
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li>Feed</li>
+                <li>Friends</li>
+                <li>Event</li>
+                <li>Watch Videos</li>
+                <li>Photos</li>
+                <li>Files</li>
+            </ul>
+            <div class="pages">
+                <h4>Pages You Like</h4>
+                <ul>
+                    <li>Fashion Design</li>
+                    <li>Graphic Design</li>
+                    <li>UI/UX Community</li>
+                    <li>Web Designer</li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main>
+            <section class="posts">
+                <form class="new-post-section" method="post" action="/users/create-post">
+                    <!-- <p class="create-post-head">Create New Post</p> -->
+                    <textarea class="create-post" placeholder="Write something..." id="content" name="content"></textarea>
+                    <button type="submit">Post</button>
+                </form>
+                <h2>Recent Posts</h2>
+                
+            </section>
+        </main>
+        <!-- Right Sidebar -->
+        <aside class="friends-list">
+            <div class="friends-search">
+                <input type="search" placeholder="Search Friends">
+            </div>
+            <h4>Friends</h4>
+
+        </aside>
+    </div>
 </body>
 </html>
-<div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">LOGO</div>
-        <ul>
-            <li>Feed</li>
-            <li>Friends</li>
-            <li>Event</li>
-            <li>Watch Videos</li>
-            <li>Photos</li>
-            <li>Files</li>
-        </ul>
-        <div class="pages">
-            <h4>Pages You Like</h4>
-            <ul>
-                <li>Fashion Design</li>
-                <li>Graphic Design</li>
-                <li>UI/UX Community</li>
-                <li>Web Designer</li>
-            </ul>
-        </div>
-    </aside>
-    <!-- Main Content -->
-    <main>
-        <header>
-            <input type="text" placeholder="Search">
-        </header>
-        <section class="recent-posts">
-            <h2>Recent Posts</h2>
-            <div class="post-grid">
-
-            </div>
-        </section>
-    </main>
-    <!-- Right Sidebar -->
-    <aside class="friends-list">
-        <h4>Friends</h4>
-        <ul>
-
-        </ul>
-    </aside>
-</div>

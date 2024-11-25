@@ -11,10 +11,15 @@ router.get("/sign-in", userController.signIn);
 router.post("/create", userController.create);
 router.get("/sign-out", userController.destroySession);
 router.get("/feed", userController.userFeed);
+router.get("/feed", userController.fetchPosts);
 
 router.post("/create-session", passport.authenticate(
     'local',
     { failureRedirect: "/users/sign-in", failureMessage: "Invalid username or password" }
 ), userController.createSession);
+
+router.post("/create-post", passport.checkAuthentication, userController.createPost);
+
+
 
 module.exports = router;
