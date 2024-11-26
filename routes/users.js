@@ -10,8 +10,14 @@ router.get("/sign-up", userController.signUp);
 router.get("/sign-in", userController.signIn);
 router.post("/create", userController.create);
 router.get("/sign-out", userController.destroySession);
-router.get("/feed", userController.userFeed);
+router.get("/feed", passport.checkAuthentication ,userController.userFeed);
 router.get("/feed", userController.fetchPosts);
+router.get("/chat", passport.checkAuthentication, passport.setAuthenticatedUser, userController.chatPage);
+router.post("/search", passport.checkAuthentication, userController.searchUsers);
+
+router.put("/:searchedFriend/add-friend/", passport.checkAuthentication, userController.addFriend);
+router.get("/:searchedUser", passport.checkAuthentication, userController.getUser);
+router.get("/suggestedUsers", passport.checkAuthentication, userController.suggestUsers);
 
 router.post("/create-session", passport.authenticate(
     'local',

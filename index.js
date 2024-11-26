@@ -1,12 +1,20 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const app = express();
-const port = 8000;
 const ejsLayouts = require('express-ejs-layouts');
 const db = require("./config/mongoose"); //importing mongo db
 const mongoStore = require("connect-mongo");
 const sassMidlleware = require("node-sass-middleware");
 const flash = require('connect-flash');
+const { Server } = require('socket.io');
+const http = require('http');
+
+const app = express();
+const port = 8000;
+const server = http.createServer(app)
+const io = new Server(server);
+
+//import chat-engine
+require('./chatEngine/chatEngine')(io);
 
 // used for session cookie
 const session = require('express-session');
@@ -60,7 +68,7 @@ app.use(passport.setAuthenticatedUser);
 const router = require('./routes/index');
 app.use('/', router);
 
-app.listen(port, (err) => {
+server.listen(port, (err) => {
     if (err) {
         console.log(`Error in strating server: ${err}`);
         return;

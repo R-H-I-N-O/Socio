@@ -1,5 +1,6 @@
 const passport = require('passport');
 const User = require('../models/users');
+const bcrypt = require('bcrypt')
 
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -7,8 +8,9 @@ passport.use(new LocalStrategy({
     usernameField: 'username'
 }, async (username, password, done) => {
     const user = await User.findOne({ username: username });
+    const isPasswordMatch = await bcrypt.compare(password, user.password, (err, result) => result);
     try {
-        if (!user || user.password != password) {
+        if (!user || isPasswordMatch) {
             console.log("Incorrect username/password");
             return done(null, false);
         }
@@ -49,7 +51,11 @@ passport.checkAuthentication = function (req, res, next) {
 // Setting authenticated user's data into locals to use in views
 passport.setAuthenticatedUser = function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.locals.user = req.user;
+        res.locals.user = {
+            _id: req.user._id,
+            name: req.user.name,
+            username: req.user.username,
+        };
     }
     return next();
 }
