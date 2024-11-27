@@ -1,264 +1,321 @@
-// Variables
-$primary-color: #f4f4f4;
-$text-color: #333;
-$secondary-color: #fff;
-
-// Mixins
-@mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@mixin grid-template($columns) {
-    display: grid;
-    grid-template-columns: $columns;
-    gap: 20px;
-}
-
-// Global Styles
+// General Styling
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    display: flex;
-    height: 100vh;
-    background-color: $secondary-color;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
 }
 
-.alert{
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    border: 2px red;
-    background-color: rgb(240, 208, 208);
-    color: red;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    z-index: 100;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-.success{
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    border: 2px green;
-    background-color: rgb(208, 240, 208);
-    color: green;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    z-index: 100;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-input:focus{
-    outline: none;
+.close-btn {
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
-    height: 50px;
     align-items: center;
-    padding: 20px 50px 20px 50px;
-    
-    input{
-        height: 30px;
-        width: 500px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6ecf0;
+    position: fixed;
+    top: 0;
+    width: 97.5%;
+    z-index: 100;
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
     }
 
-    .profile{
-        height: 40px;
+    .toggle-btn {
+        background-color: #1da1f2;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        display: none;
+    }
+
+    form {
+        display: flex;
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccd6dd;
+            border-radius: 20px;
+            outline: none;
+            margin-right: 5px;
+            width: 550px;
+        }
+
+        button {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+    }
+
+    .profile-icon {
         width: 40px;
-        border-radius: 40px;
-        background-color: #333;
+        height: 40px;
+        background-color: #e6ecf0;
+        border-radius: 50%;
+        object-fit: cover;
     }
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    height: 100%;
-    width: 100vw;
-    box-sizing: border-box;
-}
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    padding-top: 80px;
 
-// Sidebar Styles
-.sidebar, .friends-list {
-    padding: 20px;
-    width: 300px;
+    .sidebar {
+        width: 20%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        background-color: #ffffff;
+        padding: 20px;
+        border-right: 1px solid #e6ecf0;
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 20px;
+        .menu {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 15px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #1da1f2;
+                }
+            }
+        }
+
+        .pages {
+            margin-top: 20px;
+
+            h4 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 10px;
+                    color: #555;
+                }
+            }
+        }
     }
 
-    ul {
-        list-style: none;
-        padding: 0;
+    .main-content {
+        width: 52%;
+        padding: 20px;
 
-        li {
-            margin: 10px 0;
-            color: $text-color;
-            cursor: pointer;
+        .new-post-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 20px;
+
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccd6dd;
+                border-radius: 5px;
+                resize: none;
+            }
+
+            button {
+                align-self: flex-end;
+                background-color: #1da1f2;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                align-self: center;
+            }
+        }
+
+        .post-container {
+            .post-item {
+                background-color: #ffffff;
+                padding: 15px;
+                border: 1px solid #e6ecf0;
+                border-radius: 5px;
+                margin-bottom: 15px;
+
+                .post-header {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 14px;
+                    color: #555;
+                }
+
+                .post-content {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .close-btn{
+        display: none;
+    }
+
+    .friends-list {
+        width: 20%;
+        height: 100%;
+        background-color: #ffffff;
+        padding: 20px;
+        border-left: 1px solid #e6ecf0;
+        position: fixed;
+        right: 0;
+
+        .friends-search {
+            margin-bottom: 20px;
+
+            input {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccd6dd;
+                border-radius: 20px;
+                outline: none;
+            }
+        }
+
+        h4 {
+            margin-bottom: 25px;
+        }
+
+        .friends a {
+            color: #1da1f2;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+
             &:hover {
                 text-decoration: underline;
             }
         }
     }
-
-    .pages {
-        margin-top: 20px;
-
-        h4 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-    }
 }
 
-// Main Content Styles
-main {
-    padding: 20px;
-    width: 100%;
-    background-color: $primary-color;
-    box-sizing: border-box;
-    border-radius: 15px 15px 0 0;
-
-    .posts{
-        width: 100%;
-
-
-        .new-post-section{
-            display: flex;
-            gap: 1rem;
-
-            // .create-post-head{
-            //     width: 200px;
-            // }
-
-            .create-post{
-                width: 100%;
-                resize: none;
-                padding: 10px;
-                border-radius: 10px;
-            }
-            
-            button{
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                font-size: 16px;
-            }
+    .header-responsive {
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e6ecf0;
+        position: fixed;
+        top: 0;
+        width: 97.5%;
+        z-index: 100;    
+      
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
         }
+      }
+      
+      /* Header Menu */
+      .header-menu {
+        display: none; // Hidden by default
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 70%;
+        height: 100%;
+        padding: 20px;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 100;
+        gap: 1rem;
+        .close-btn{
+            align-self: flex-start;
+        }
+        form {
+          display: flex;
+          margin-bottom: 20px;
+      
+          input {
+            padding: 8px;
+            border-radius: 20px;
+            outline: none;
+            margin-right: 5px;
+            max-width: 550px;
+            width: 100%;
+          }
+      
+          button {
+            background-color: #1da1f2;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+          }
+        }
+        
+        .toggle-btn {
+          background-color: transparent;
+          font-size: 24px;
+          border: none;
+        }
+      }
+      
+
+@media screen and (max-width: 768px) {
+    .header{
+        display: none;
     }
-
-    section {
-        margin-bottom: 20px;
-
-        h2 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-align: center
-        }
-
-        .story-grid, .post-grid {
-            @include grid-template(repeat(auto-fit, minmax(150px, 1fr)));
-
-            .story, .post {
-                background-color: $secondary-color;
-                border-radius: 10px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-                text-align: center;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-
-                p {
-                    padding: 10px;
-                    font-size: 0.9rem;
-                    color: $text-color;
-                }
-            }
-        }
-
-        .post-grid .post {
-            .post-content {
-                padding: 10px;
-
-                h3 {
-                    font-size: 1rem;
-                    color: $text-color;
-                    margin-bottom: 5px;
-                }
-
-                p {
-                    font-size: 0.9rem;
-                    margin: 10px 0;
-                }
-
-                .actions {
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 0.9rem;
-
-                    span {
-                        color: $text-color;
-                    }
-                }
-            }
-        }
-    }
-}
-
-// Friends List Styles
-.friends-list {
     
-    .friends-search{
-        input{
-            width: 250px;
-            border-radius: 5px;
-            padding: 10px;
+    .header-responsive {
+        display: flex;
+        .input{
+            max-width: 100%;
         }
     }
 
-    ul {
-        list-style: none;
-        padding: 0;
-
-        li {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-
-            img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-
-            span:first-child {
-                flex-grow: 1;
-                font-size: 0.9rem;
-                color: $text-color;
-            }
-
-            span:last-child {
-                font-size: 0.8rem;
-                color: gray;
-            }
+    .sidebar,
+    .friends-list {
+        display: none; /* Sidebar and friends list hidden by default */
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 70%;
+        background: #fff;
+        z-index: 1000;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        
+        .close-btn{
+            display: block;
+            align-self: flex-end;
+            margin-bottom: 25px;
         }
     }
+    .main-content{
+        width: 90%;
+    }
+
 }

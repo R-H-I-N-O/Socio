@@ -1,0 +1,33 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile .user-profile {
+  height: 25rem;
+  width: 25rem;
+  border-radius: 25rem;
+}
+
+.profile .user-name {
+  font-size: 42px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.profile button {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profile .add-friend-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}

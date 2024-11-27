@@ -7,6 +7,8 @@ const sassMidlleware = require("node-sass-middleware");
 const flash = require('connect-flash');
 const { Server } = require('socket.io');
 const http = require('http');
+require('dotenv').config();
+const cloudinary = require("./config/cloudinary");
 
 const app = express();
 const port = 8000;

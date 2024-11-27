@@ -1,0 +1,17 @@
+.search-result {
+  font-size: 32px;
+  text-align: center;
+}
+
+.search-result div {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  min-width: 100px;
+  background-color: #c4e9ff;
+}
+
+.search-result a {
+  text-decoration: none;
+  color: black;
+}

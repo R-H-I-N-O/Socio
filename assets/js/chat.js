@@ -1,17 +1,31 @@
-const socket = io();
+document.addEventListener("DOMContentLoaded", () => {
+    const chatForm = document.getElementById("chat-form");
+    const messageInput = document.getElementById("message-input");
+    const viewMessage = document.getElementById("view-message");
 
-const username = user.username;
+    chatForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent the form's default submit behavior
+        console.log("Form submission intercepted."); // Debug log
 
-socket.emit('registerUser', username);
+        const message = messageInput.value.trim();
 
-const chatForm = document.getElementById("chat-form");
-chatForm.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const message = document.getElementById("message-input");
-    const viewMessage = document.getElementById('view-message');
-    socket.emit('privateMessage', { to: 'awwPUcEI2WC4itctAAAD', message, from: username });
-    const msgDiv = document.createElement('div');
-        msgDiv.textContent = `You: ${message}`;
+        if (!message) return; // Ignore empty messages
+
+        // Emit the private message to the server
+        socket.emit("privateMessage", { to: recipientId, message, from: user._id });
+
+        // Display the message in the sender's chat
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message", "sent");
+        msgDiv.innerHTML = `
+            <span class="message-content">
+                ${message}
+                <p class="message-timestamp">${new Date().toLocaleString()}</p>
+            </span>
+        `;
         viewMessage.appendChild(msgDiv);
-        document.getElementById('message-input').value = '';
-})
+        viewMessage.scrollTop = viewMessage.scrollHeight; // Auto-scroll to the bottom
+
+        messageInput.value = ""; // Clear the input field
+    });
+});

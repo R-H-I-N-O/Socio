@@ -1,22 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport');
+const upload = require("../config/multer");
 
 const userController = require("../controllers/user_controller");
 
 router.get("/profile", passport.checkAuthentication, userController.userProfile);
-router.get("/posts", userController.userPosts);
 router.get("/sign-up", userController.signUp);
 router.get("/sign-in", userController.signIn);
-router.post("/create", userController.create);
+router.post("/create", upload.single('profileImage'), userController.create);
 router.get("/sign-out", userController.destroySession);
 router.get("/feed", passport.checkAuthentication ,userController.userFeed);
-router.get("/feed", userController.fetchPosts);
-router.get("/chat", passport.checkAuthentication, passport.setAuthenticatedUser, userController.chatPage);
+router.get("/:recipientId/chat", passport.checkAuthentication, passport.setAuthenticatedUser, userController.chatPage);
 router.post("/search", passport.checkAuthentication, userController.searchUsers);
 
-router.put("/:searchedFriend/add-friend/", passport.checkAuthentication, userController.addFriend);
-router.get("/:searchedUser", passport.checkAuthentication, userController.getUser);
+router.post("/:searchedFriendId/:searchedFriendName/add-friend/", passport.checkAuthentication, userController.addFriend);
+router.get("/:searchedUserId", passport.checkAuthentication, userController.getUser);
 router.get("/suggestedUsers", passport.checkAuthentication, userController.suggestUsers);
 
 router.post("/create-session", passport.authenticate(

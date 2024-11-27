@@ -55,6 +55,8 @@ passport.setAuthenticatedUser = function (req, res, next) {
             _id: req.user._id,
             name: req.user.name,
             username: req.user.username,
+            friends: req.user.friends,
+            imageUrl: req.user.imageUrl
         };
     }
     return next();

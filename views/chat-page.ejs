@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title><%= recipient.name %></title>
+    <link rel="stylesheet" href="/css/chat-page.css">
 </head>
+
 <body>
-    <div class="chat-container">
-        <div id="view-message">username: <%= user.username %></div>
-        <form id="chat-form">
-            <input type="text" id="message-input" name="message-input"/>
-            <button class="submit">Send</button>
-        </form>
+    <div class="main">
+        <!-- Friends List -->
+        <div class="sidebar">
+            <div class="back-button-container">
+                <button class="back-button" onclick="history.back()">←</button>
+            </div>
+            <div class="friends-list">
+                <h4>Friends</h4>
+                <div class="friends">
+                    <% user.friends.forEach(friend => { %>
+                        <a href="/users/<%= friend._id %>/chat" class="friend">
+                            <span class="friend-name"><%= friend.name %></span>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Chat Messages -->
+            <div id="view-message" class="all-messages">
+                <% messages.forEach(message => { %>
+                    <div class="message <%= message.from.toString() === user._id.toString() ? 'sent' : 'received' %>">
+                        <span class="message-content">
+                            <%= message.message %>
+                            <p class="message-timestamp"><%= message.timestamp.toLocaleString() %></p>
+                        </span>
+                    </div>
+                <% }); %>
+            </div>
+
+            <!-- Chat Form -->
+            <form id="chat-form" class="chat-form" autocomplete="off">
+                <input type="text" id="message-input" name="message-input" class="message-input" placeholder="Type your message here..." required aria-label="Message input" />
+                <button class="send-button">Send</button>
+            </form>
+        </div>
     </div>
+
     <script>
-        const user = <%- JSON.stringify(user) %>;
+        const user = <% - JSON.stringify(user) %>;
+        const recipientId = <% - JSON.stringify(recipient._id) %>;
     </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
 </body>
+
 </html>

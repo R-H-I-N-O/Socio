@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Dashboard</title>
     <link rel="stylesheet" href="/css/user_feed.css">
+    <link rel="stylesheet" href="/css/searched_user_profile.css">
+    
 </head>
 
 <body>
-    <% if(alert.length) {%>
-    <div class="<%= alert.type === 'error' ? 'alert' : 'success' %>">
-        <%= alert.message %>
-    </div>
-    <% } %>
 
     <!-- Header -->
     <header class="header">
@@ -63,25 +61,15 @@
     
         <!-- Main Content -->
         <main class="main-content">
-            <section class="posts">
-                <form class="new-post-section" method="post" action="/users/create-post">
-                    <textarea class="create-post" placeholder="Write something..." id="content" name="content"></textarea>
-                    <button type="submit">Post</button>
-                </form>
-                <h2>Recent Posts</h2>
-                <div class="post-container">
-                    <% posts.forEach(post => { %>
-                        <div class="post-item">
-                            <div class="post-header">
-                                <span class="post-author"><%= post.name %></span>
-                                <span class="post-timestamp"><%= post.time.toISOString().slice(0, 10) + " " + post.time.toISOString().slice(11, 16) %>
-                                </span>
-                            </div>
-                            <div class="post-content">
-                                <p><%= post.content %></p>
-                            </div>
-                        </div>
-                    <% }) %>
+            <section class="profile">
+                <div>
+                    <img src="<%= searchedUserDetails.imageUrl %>" class="user-profile" alt="profile pic"/>
+                    <div class="user-name"><%= searchedUserDetails.name %></div>
+                    <div><% if (!friend) { %>
+                     <form method="post" action="/users/<%= searchedUserDetails._id %>/<%= searchedUserDetails.name %>/add-friend" class="add-friend-form">
+                        <button>add friend</button>
+                     </form>
+                    <% } %> </div>
                 </div>
             </section>
         </main>
