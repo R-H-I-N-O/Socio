@@ -1,31 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const chatForm = document.getElementById("chat-form");
-    const messageInput = document.getElementById("message-input");
-    const viewMessage = document.getElementById("view-message");
+const socket = io();
+console.log(user.username, "username");
+const username = user.username;
 
-    chatForm.addEventListener("submit", (e) => {
-        e.preventDefault(); // Prevent the form's default submit behavior
-        console.log("Form submission intercepted."); // Debug log
+socket.emit("registerUser", username); // Register user on the server with socket ID
 
-        const message = messageInput.value.trim();
+const chatForm = document.getElementById("chat-form");
+const viewMessage = document.getElementById("view-message");
 
-        if (!message) return; // Ignore empty messages
+chatForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const messageInput = document.getElementById("message-input");
+  const message = messageInput.value.trim();
 
-        // Emit the private message to the server
-        socket.emit("privateMessage", { to: recipientId, message, from: user._id });
+  console.log("Sending message:", message);
 
-        // Display the message in the sender's chat
-        const msgDiv = document.createElement("div");
-        msgDiv.classList.add("message", "sent");
-        msgDiv.innerHTML = `
-            <span class="message-content">
-                ${message}
-                <p class="message-timestamp">${new Date().toLocaleString()}</p>
-            </span>
-        `;
-        viewMessage.appendChild(msgDiv);
-        viewMessage.scrollTop = viewMessage.scrollHeight; // Auto-scroll to the bottom
+  socket.emit("privateMessage", { to: recipientId, message, from: user._id });
 
-        messageInput.value = ""; // Clear the input field
-    });
+  const msgDiv = document.createElement("div");
+  msgDiv.textContent = `You: ${message}`;
+  viewMessage.appendChild(msgDiv);
+  viewMessage.offsetHeight;
+  viewMessage.scrollTop = viewMessage.scrollHeight;
+
+  messageInput.value = "";
+  location.reload();
+});
+
+// Listen for incoming private messages from the server
+socket.on("privateMessage", (data) => {
+  const msgDiv = document.createElement("div");
+  msgDiv.textContent = `${data.from}: ${data.message}`;
+  viewMessage.appendChild(msgDiv);
+  viewMessage.offsetHeight;
+  viewMessage.scrollTop = viewMessage.scrollHeight;
+  location.reload();
+
 });

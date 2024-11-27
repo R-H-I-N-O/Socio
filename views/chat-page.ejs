@@ -50,9 +50,11 @@
     </div>
 
     <script>
-        const user = <% - JSON.stringify(user) %>;
-        const recipientId = <% - JSON.stringify(recipient._id) %>;
+        // Pass the user and recipientId to the JavaScript
+        const user = <%- JSON.stringify(user) %>;
+        const recipientId = "<%= recipient._id %>";
     </script>
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
 </body>
